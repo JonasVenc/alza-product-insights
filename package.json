@@ -2,13 +2,14 @@
   "name": "trending-product-insights",
   "version": "1.0.0",
   "description": "Scrapes trending products from Amazon based on a keyword.",
+  "type": "module",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
   },
   "dependencies": {
     "apify": "^3.0.0",
-    "got-scraping": "^7.3.0",
+    "got-scraping": "^4.1.1",
     "cheerio": "^1.0.0-rc.12"
   }
 }
