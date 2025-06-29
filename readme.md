@@ -1,6 +1,6 @@
-# Trending Product Insights 2025
+# Alza Product Scraper
 
-This Apify actor scrapes trending products from Amazon based on a keyword input. It extracts product titles, links, and prices from the search results page.
+This Apify actor scrapes product data from Alza.cz based on a keyword input. It extracts product titles, prices, and links from the search results page.
 
 ## 📥 Input
 
@@ -8,5 +8,5 @@ Provide a JSON input with the following field:
 
 ```json
 {
-  "keyword": "smart home gadgets"
+  "keyword": "notebook"
 }
