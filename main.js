@@ -1,26 +1,28 @@
-const Apify = require('apify');
-const { gotScraping } = require('got-scraping');
-const cheerio = require('cheerio');
+import { Actor } from 'apify';
+import { gotScraping } from 'got-scraping';
+import cheerio from 'cheerio';
 
-Apify.main(async () => {
-    const input = await Apify.getInput();
-    const keyword = input.keyword || 'smart home gadgets';
-    const searchUrl = `https://www.amazon.com/s?k=${encodeURIComponent(keyword)}`;
+await Actor.init();
 
-    const response = await gotScraping({ url: searchUrl });
-    const $ = cheerio.load(response.body);
+const { keyword } = await Actor.getInput();
+if (!keyword) throw new Error('Keyword input is required.');
 
-    const products = [];
+const searchUrl = `https://www.amazon.com/s?k=${encodeURIComponent(keyword)}`;
 
-    $('div.s-main-slot div[data-component-type="s-search-result"]').each((index, el) => {
-        const title = $(el).find('h2 a span').text().trim();
-        const link = 'https://www.amazon.com' + $(el).find('h2 a').attr('href');
-        const price = $(el).find('.a-price .a-offscreen').first().text().trim();
+const response = await gotScraping({ url: searchUrl });
+const $ = cheerio.load(response.body);
 
-        if (title && link) {
-            products.push({ title, link, price });
-        }
-    });
+const products = [];
 
-    await Apify.pushData(products);
+$('div.s-main-slot div[data-component-type="s-search-result"]').each((index, el) => {
+    const title = $(el).find('h2 a span').text().trim();
+    const link = 'https://www.amazon.com' + $(el).find('h2 a').attr('href');
+    const price = $(el).find('.a-price .a-offscreen').first().text().trim();
+
+    if (title && link) {
+        products.push({ title, link, price });
+    }
 });
+
+await Actor.pushData(products);
+await Actor.exit();
