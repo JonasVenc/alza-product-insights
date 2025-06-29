@@ -1,0 +1,27 @@
+{
+  "name": "trending-product-insights",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": null,
+  "defaultRunOptions": {
+    "build": "latest",
+    "timeoutSecs": 3600,
+    "memoryMbytes": 1024
+  },
+  "input": {
+    "title": "Input schema",
+    "type": "object",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "keyword": {
+          "title": "Search keyword",
+          "type": "string",
+          "description": "Keyword to search for trending products",
+          "default": "smart home gadgets"
+        }
+      },
+      "required": ["keyword"]
+    }
+  }
+}
