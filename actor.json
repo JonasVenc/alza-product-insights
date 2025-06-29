@@ -1,5 +1,5 @@
 {
-  "name": "trending-product-insights",
+  "name": "alza-product-scraper",
   "version": "0.1",
   "buildTag": "latest",
   "env": null,
@@ -17,8 +17,8 @@
         "keyword": {
           "title": "Search keyword",
           "type": "string",
-          "description": "Keyword to search for trending products",
-          "default": "smart home gadgets"
+          "description": "Keyword to search for products on Alza.cz",
+          "default": "notebook"
         }
       },
       "required": ["keyword"]
