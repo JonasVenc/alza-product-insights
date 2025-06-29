@@ -1,7 +1,7 @@
 {
-  "name": "trending-product-insights",
+  "name": "alza-product-scraper",
   "version": "1.0.0",
-  "description": "Scrapes trending products from Amazon based on a keyword.",
+  "description": "Scrapes product data from Alza.cz based on a keyword.",
   "type": "module",
   "main": "main.js",
   "scripts": {
